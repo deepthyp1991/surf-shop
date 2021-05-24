@@ -36,23 +36,23 @@ router.get('/profile/:user_id', (req, res, next) => {
   res.send('PUT /profile/:user_id')
 });
 
-/* GET /forget-password */
+/* GET /forget */
 router.get('/forget-password', (req, res, next) => {
   res.send('GET /forget-password')
 });
 
-/* PUT /forget-password */
+/* PUT /forget */
 router.get('/forget-password', (req, res, next) => {
   res.send('PUT /forget-password')
 });
 
-/* GET /reset-password */
-router.get('/reset-password', (req, res, next) => {
-  res.send('GET /reset-password')
+/* GET /reset/:token */
+router.get('/reset/:token', (req, res, next) => {
+  res.send('GET /reset/:token')
 });
 
-/* PUT /reset-password */
-router.put('/reset-password', (req, res, next) => {
-  res.send('PUT /reset-password')
+/* PUT /reset/:token */
+router.put('/reset/:token', (req, res, next) => {
+  res.send('PUT /reset/:token')
 });
 module.exports = router;
