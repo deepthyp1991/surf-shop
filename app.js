@@ -6,6 +6,8 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const User = require('./models/user');
+const session = require('express-session')
+const mongoose = require('mongoose')
 
 
 //require routes
@@ -14,6 +16,18 @@ const reviewsRouter = require('./routes/reviews');
 const postsRouter = require('./routes/posts')
 
 const app = express();
+
+//connect to the database
+mongoose.connect('mongodb+srv://deepthy:surf-shop@cluster0.bsycu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', { useNewUrlParser: true , useCreateIndex:true,  useUnifiedTopology: true }).then(()=> {
+  console.log("Connected to DB")
+}).catch(err => {
+  console.log('ERROR:', err.message)
+})
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('We are connected!')
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
